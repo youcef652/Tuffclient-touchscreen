@@ -1,0 +1,204 @@
+/* ===================================================================
+   Eaglercraft Touch Controls - Custom Button Layout (PojavLauncher-style)
+   =================================================================== */
+
+#etcOverlay {
+	position: fixed;
+	inset: 0;
+	z-index: 999999;
+	pointer-events: none;
+	touch-action: none;
+	font-family: sans-serif;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+#etcOverlay.etc-hidden {
+	display: none;
+}
+
+/* Full-screen look/camera drag layer (sits behind buttons) */
+#etcLookLayer {
+	position: absolute;
+	inset: 0;
+	pointer-events: auto;
+	touch-action: none;
+	z-index: 1;
+}
+
+/* Generic button */
+.etc-btn {
+	position: absolute;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(20, 20, 20, 0.38);
+	border: 2px solid rgba(255, 255, 255, 0.55);
+	border-radius: 14px;
+	color: #fff;
+	font-size: 13px;
+	font-weight: 600;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+	pointer-events: auto;
+	touch-action: none;
+	z-index: 2;
+	box-sizing: border-box;
+	line-height: 1.1;
+	text-align: center;
+	padding: 2px;
+}
+
+.etc-btn.etc-round {
+	border-radius: 50%;
+}
+
+.etc-btn.etc-active {
+	background: rgba(255, 255, 255, 0.55);
+	color: #111;
+	border-color: #fff;
+}
+
+/* Joystick */
+.etc-joystick-base {
+	position: absolute;
+	border-radius: 50%;
+	background: rgba(20, 20, 20, 0.30);
+	border: 2px solid rgba(255, 255, 255, 0.5);
+	pointer-events: auto;
+	touch-action: none;
+	z-index: 2;
+	box-sizing: border-box;
+}
+
+.etc-joystick-knob {
+	position: absolute;
+	width: 42%;
+	height: 42%;
+	left: 29%;
+	top: 29%;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.55);
+	border: 2px solid rgba(255, 255, 255, 0.8);
+	pointer-events: none;
+	transition: none;
+}
+
+/* Edit mode visuals */
+.etc-editing .etc-btn,
+.etc-editing .etc-joystick-base {
+	outline: 2px dashed #ffcc00;
+	outline-offset: 2px;
+}
+
+.etc-resize-handle {
+	position: absolute;
+	right: -8px;
+	bottom: -8px;
+	width: 18px;
+	height: 18px;
+	background: #ffcc00;
+	border: 2px solid #333;
+	border-radius: 4px;
+	pointer-events: auto;
+	touch-action: none;
+	z-index: 3;
+	display: none;
+}
+
+.etc-editing .etc-resize-handle {
+	display: block;
+}
+
+.etc-del-handle {
+	position: absolute;
+	left: -10px;
+	top: -10px;
+	width: 20px;
+	height: 20px;
+	background: #d63131;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	color: #fff;
+	font-size: 13px;
+	font-weight: bold;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	pointer-events: auto;
+	touch-action: none;
+	z-index: 3;
+}
+
+.etc-editing .etc-del-handle {
+	display: flex;
+}
+
+/* Top toolbar (gear / add / reset / done) */
+#etcToolbar {
+	position: absolute;
+	top: env(safe-area-inset-top, 6px);
+	right: env(safe-area-inset-right, 6px);
+	display: flex;
+	gap: 6px;
+	z-index: 10;
+	pointer-events: auto;
+}
+
+.etc-tool-btn {
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	background: rgba(20,20,20,0.55);
+	border: 2px solid rgba(255,255,255,0.6);
+	color: #fff;
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: auto;
+	touch-action: none;
+}
+
+.etc-tool-btn.etc-tool-active {
+	background: #ffcc00;
+	color: #111;
+	border-color: #fff;
+}
+
+/* Palette panel for adding buttons in edit mode */
+#etcPalette {
+	position: absolute;
+	top: 54px;
+	right: env(safe-area-inset-right, 6px);
+	background: rgba(15,15,15,0.85);
+	border: 2px solid rgba(255,255,255,0.5);
+	border-radius: 10px;
+	padding: 8px;
+	display: none;
+	flex-direction: column;
+	gap: 6px;
+	max-height: 70vh;
+	overflow-y: auto;
+	pointer-events: auto;
+	z-index: 10;
+	width: 170px;
+}
+
+#etcPalette.etc-open {
+	display: flex;
+}
+
+.etc-palette-item {
+	background: rgba(255,255,255,0.12);
+	border: 1px solid rgba(255,255,255,0.35);
+	border-radius: 6px;
+	color: #fff;
+	font-size: 12px;
+	padding: 6px 8px;
+	text-align: left;
+	pointer-events: auto;
+}
+
+.etc-palette-item:active {
+	background: rgba(255,204,0,0.5);
+}
